@@ -15,9 +15,9 @@ void setup() {
   Serial.begin(9600);      //Begin Reading/Open Serial 
   Serial.begin (9600) ;
   pinMode(A1,INPUT);
-  elevator.attach(9);
+  elevator.attach(37);
   pinMode(A2,INPUT);
-  rudder.attach(8);
+  rudder.attach(36);
   esc.write(1023);
   delay(10000);
   esc.write(508);
@@ -25,8 +25,8 @@ void setup() {
 
 void loop() {
   
-  x_axis();
-  y_axis();
+  x_axiss();
+  y_axiss();
   
   input=analogRead(A0);                      //Value of input is analog input on pin A0
   Serial.print("Original Input Value:");      //Serial print the original input value
@@ -42,13 +42,13 @@ void loop() {
   esc.write(input);
 }
 
-void x_axis(){
+void x_axiss(){
   x_axis=analogRead(A1);
   elevator_val=map(x_axis,0,1023,0,180);
   elevator.write(elevator_val);
 }
 
-void y_axis(){
+void y_axiss(){
   y_axis=analogRead(A2);
   rudder_val=map(y_axis,0,1023,0,180);
   rudder.write(rudder_val);
